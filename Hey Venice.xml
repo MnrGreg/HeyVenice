@@ -13,7 +13,11 @@
 			<dict>
 				<key>WFCommentActionText</key>
 				<string>🤖️ Hey Venice Shortcut powered by venice.ai
-Version 0.0.1
+
+Version 0.0.2
+- updated model to deepseek-r1-671b
+- fixed followup question processing
+
 https://github.com/MnrGreg/HeyVenice
 X: @_theGreg</string>
 			</dict>
@@ -26,7 +30,7 @@ X: @_theGreg</string>
 				<key>UUID</key>
 				<string>C438F31E-F749-4689-8DA7-CA0767775357</string>
 				<key>WFTextActionText</key>
-				<string>lWHVwrbnQFeGKzIEwYEJG4Q9Lc8UVHYXckYXAygCqv</string>
+				<string>TGDIerZP1IFXa-vjyPzlO26aC0lyOebE6iiOpKH3SL</string>
 			</dict>
 		</dict>
 		<dict>
@@ -60,7 +64,7 @@ X: @_theGreg</string>
 				<key>UUID</key>
 				<string>CF599EF6-D9BF-49E4-8F81-F4949F4C41F4</string>
 				<key>WFTextActionText</key>
-				<string>deepseek-r1-llama-70b</string>
+				<string>deepseek-r1-671b</string>
 			</dict>
 		</dict>
 		<dict>
@@ -84,108 +88,6 @@ X: @_theGreg</string>
 				</dict>
 				<key>WFVariableName</key>
 				<string>model</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.gettext</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>4A42FFF9-5710-45EB-ADC9-AB6C0BA7C8EB</string>
-				<key>WFTextActionText</key>
-				<string>Yes?</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.setvariable</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>Text</string>
-						<key>OutputUUID</key>
-						<string>4A42FFF9-5710-45EB-ADC9-AB6C0BA7C8EB</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFVariableName</key>
-				<string>welcome-text</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.gettext</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>613CABE0-9C23-4CEC-9581-F5DCC72247E1</string>
-				<key>WFTextActionText</key>
-				<string>Anything else?</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.setvariable</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>Text</string>
-						<key>OutputUUID</key>
-						<string>613CABE0-9C23-4CEC-9581-F5DCC72247E1</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFVariableName</key>
-				<string>continue-text</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.gettext</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>67C46B3C-61D5-4681-AFAC-9C254D176C3D</string>
-				<key>WFTextActionText</key>
-				<string>No</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.setvariable</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>Text</string>
-						<key>OutputUUID</key>
-						<string>67C46B3C-61D5-4681-AFAC-9C254D176C3D</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFVariableName</key>
-				<string>exit-command</string>
 			</dict>
 		</dict>
 		<dict>
@@ -317,7 +219,7 @@ X: @_theGreg</string>
 																	<dict>
 																		<key>attachmentsByRange</key>
 																		<dict>
-																			<key>{96, 1}</key>
+																			<key>{119, 1}</key>
 																			<dict>
 																				<key>Aggrandizements</key>
 																				<array>
@@ -335,9 +237,16 @@ X: @_theGreg</string>
 																				<key>Type</key>
 																				<string>CurrentDate</string>
 																			</dict>
+																			<key>{140, 1}</key>
+																			<dict>
+																				<key>Type</key>
+																				<string>Variable</string>
+																				<key>VariableName</key>
+																				<string>model</string>
+																			</dict>
 																		</dict>
 																		<key>string</key>
-																		<string>You are venice.ai serving large language models. Answer as concisely as possible. Current date: &#xFFFC;.</string>
+																		<string>You are venice.ai serving large language models. Answer as concisely as possible unless told otherwise.  Current date: &#xFFFC;. Your LLM Model is &#xFFFC; </string>
 																	</dict>
 																	<key>WFSerializationType</key>
 																	<string>WFTextTokenString</string>
@@ -534,6 +443,49 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.getdevicedetails</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>0CFC3AEA-809E-4EFA-A24A-77D4A7060279</string>
+				<key>WFDeviceDetail</key>
+				<string>Device Is Watch</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>578D1647-2B79-4EC4-8002-57DBD2B5007A</string>
+				<key>WFCondition</key>
+				<integer>4</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Type</key>
+					<string>Variable</string>
+					<key>Variable</key>
+					<dict>
+						<key>Value</key>
+						<dict>
+							<key>OutputName</key>
+							<string>Device Is Watch</string>
+							<key>OutputUUID</key>
+							<string>0CFC3AEA-809E-4EFA-A24A-77D4A7060279</string>
+							<key>Type</key>
+							<string>ActionOutput</string>
+						</dict>
+						<key>WFSerializationType</key>
+						<string>WFTextTokenAttachment</string>
+					</dict>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
 			<string>is.workflow.actions.dictatetext</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
@@ -543,7 +495,7 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.setvariable</string>
+			<string>is.workflow.actions.appendvariable</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>WFInput</key>
@@ -570,29 +522,69 @@ X: @_theGreg</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>GroupingIdentifier</key>
+				<string>578D1647-2B79-4EC4-8002-57DBD2B5007A</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.ask</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>1AEE3372-617D-453B-A1FF-95C41B39F580</string>
+				<key>WFAskActionPrompt</key>
+				<string>Anything else?</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Ask for Input</string>
+						<key>OutputUUID</key>
+						<string>1AEE3372-617D-453B-A1FF-95C41B39F580</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>user-input</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>578D1647-2B79-4EC4-8002-57DBD2B5007A</string>
+				<key>UUID</key>
+				<string>4EDCEFEE-B552-4267-A451-19AC987DE415</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
 				<string>4BD7B99C-7D64-4913-BBE7-D8E57DF294B4</string>
 				<key>WFCondition</key>
 				<integer>8</integer>
 				<key>WFConditionalActionString</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>attachmentsByRange</key>
-						<dict>
-							<key>{0, 1}</key>
-							<dict>
-								<key>Type</key>
-								<string>Variable</string>
-								<key>VariableName</key>
-								<string>exit-command</string>
-							</dict>
-						</dict>
-						<key>string</key>
-						<string>&#xFFFC;</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenString</string>
-				</dict>
+				<string>No</string>
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>WFInput</key>
@@ -646,16 +638,61 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.getdevicedetails</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>D3147FAF-353C-4062-B36A-4EAA723D967D</string>
+				<key>WFDeviceDetail</key>
+				<string>Device Is Watch</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>FF08E8C8-E0DA-4CC6-AD26-16FFFEF71D22</string>
+				<key>WFCondition</key>
+				<integer>4</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Type</key>
+					<string>Variable</string>
+					<key>Variable</key>
+					<dict>
+						<key>Value</key>
+						<dict>
+							<key>OutputName</key>
+							<string>Device Is Watch</string>
+							<key>OutputUUID</key>
+							<string>D3147FAF-353C-4062-B36A-4EAA723D967D</string>
+							<key>Type</key>
+							<string>ActionOutput</string>
+						</dict>
+						<key>WFSerializationType</key>
+						<string>WFTextTokenAttachment</string>
+					</dict>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
 			<string>is.workflow.actions.dictatetext</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
 				<string>A194BB6E-2FCC-4784-B9A3-1F3AC2F7C3C6</string>
+				<key>WFDictateTextStopListening</key>
+				<string>After Pause</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.appendvariable</string>
+			<string>is.workflow.actions.setvariable</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>WFInput</key>
@@ -674,6 +711,62 @@ X: @_theGreg</string>
 				</dict>
 				<key>WFVariableName</key>
 				<string>user-input</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>FF08E8C8-E0DA-4CC6-AD26-16FFFEF71D22</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.ask</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>93409D44-1585-4DB6-A81F-5704B1333318</string>
+				<key>WFAskActionPrompt</key>
+				<string>Yes?</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Ask for Input</string>
+						<key>OutputUUID</key>
+						<string>93409D44-1585-4DB6-A81F-5704B1333318</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>user-input</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>FF08E8C8-E0DA-4CC6-AD26-16FFFEF71D22</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -1230,14 +1323,10 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.speaktext</string>
+			<string>is.workflow.actions.showresult</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
-				<key>WFSpeakTextRate</key>
-				<real>0.61587975543478257</real>
-				<key>WFSpeakTextWait</key>
-				<false/>
-				<key>WFText</key>
+				<key>Text</key>
 				<dict>
 					<key>Value</key>
 					<dict>
@@ -1274,14 +1363,10 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.speaktext</string>
+			<string>is.workflow.actions.showresult</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
-				<key>WFSpeakTextRate</key>
-				<real>0.63648097826086958</real>
-				<key>WFSpeakTextWait</key>
-				<false/>
-				<key>WFText</key>
+				<key>Text</key>
 				<dict>
 					<key>Value</key>
 					<dict>
@@ -1314,6 +1399,15 @@ X: @_theGreg</string>
 				<string>674DEC21-DE75-4738-9CF8-AB424CA42998</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.delay</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFDelayTime</key>
+				<real>1</real>
 			</dict>
 		</dict>
 		<dict>
