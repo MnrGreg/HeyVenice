@@ -14,9 +14,12 @@
 				<key>WFCommentActionText</key>
 				<string>🤖️ Hey Venice Shortcut powered by venice.ai
 
-Version 0.0.2
-- updated model to deepseek-r1-671b
-- fixed followup question processing
+Simply say “Hey Venice” to trigger Shortcut
+
+Version 0.0.3
+- changed default model to venice-uncensored [Dolphin Mistral 24B Venice Edition]
+- fixed followup question processing on Apple Watch
+- toggle websearch with “on|off|auto” default = on
 
 https://github.com/MnrGreg/HeyVenice
 X: @_theGreg</string>
@@ -24,13 +27,94 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.gettext</string>
+			<string>is.workflow.actions.dictionary</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>C438F31E-F749-4689-8DA7-CA0767775357</string>
-				<key>WFTextActionText</key>
-				<string>TGDIerZP1IFXa-vjyPzlO26aC0lyOebE6iiOpKH3SL</string>
+				<string>33CCDA99-B76B-4543-8B0E-84D03327DCFE</string>
+				<key>WFItems</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>WFDictionaryFieldValueItems</key>
+						<array>
+							<dict>
+								<key>WFItemType</key>
+								<integer>0</integer>
+								<key>WFKey</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>string</key>
+										<string>model</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFTextTokenString</string>
+								</dict>
+								<key>WFValue</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>string</key>
+										<string>venice-uncensored</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFTextTokenString</string>
+								</dict>
+							</dict>
+							<dict>
+								<key>WFItemType</key>
+								<integer>0</integer>
+								<key>WFKey</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>string</key>
+										<string>websearch</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFTextTokenString</string>
+								</dict>
+								<key>WFValue</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>string</key>
+										<string>on</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFTextTokenString</string>
+								</dict>
+							</dict>
+							<dict>
+								<key>WFItemType</key>
+								<integer>0</integer>
+								<key>WFKey</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>string</key>
+										<string>apikey</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFTextTokenString</string>
+								</dict>
+								<key>WFValue</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>string</key>
+										<string>TGDIerZP1IFXa-vjyPzlO26aC0lyOebE6iiOpKH3SL</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFTextTokenString</string>
+								</dict>
+							</dict>
+						</array>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFDictionaryFieldValue</string>
+				</dict>
 			</dict>
 		</dict>
 		<dict>
@@ -43,9 +127,9 @@ X: @_theGreg</string>
 					<key>Value</key>
 					<dict>
 						<key>OutputName</key>
-						<string>Text</string>
+						<string>Dictionary</string>
 						<key>OutputUUID</key>
-						<string>C438F31E-F749-4689-8DA7-CA0767775357</string>
+						<string>33CCDA99-B76B-4543-8B0E-84D03327DCFE</string>
 						<key>Type</key>
 						<string>ActionOutput</string>
 					</dict>
@@ -53,41 +137,7 @@ X: @_theGreg</string>
 					<string>WFTextTokenAttachment</string>
 				</dict>
 				<key>WFVariableName</key>
-				<string>API-key</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.gettext</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>CF599EF6-D9BF-49E4-8F81-F4949F4C41F4</string>
-				<key>WFTextActionText</key>
-				<string>deepseek-r1-671b</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.setvariable</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>Text</string>
-						<key>OutputUUID</key>
-						<string>CF599EF6-D9BF-49E4-8F81-F4949F4C41F4</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFVariableName</key>
-				<string>model</string>
+				<string>config</string>
 			</dict>
 		</dict>
 		<dict>
@@ -135,14 +185,23 @@ X: @_theGreg</string>
 										<dict>
 											<key>{0, 1}</key>
 											<dict>
+												<key>Aggrandizements</key>
+												<array>
+													<dict>
+														<key>DictionaryKey</key>
+														<string>model</string>
+														<key>Type</key>
+														<string>WFDictionaryValueVariableAggrandizement</string>
+													</dict>
+												</array>
 												<key>Type</key>
 												<string>Variable</string>
 												<key>VariableName</key>
-												<string>model</string>
+												<string>config</string>
 											</dict>
 										</dict>
 										<key>string</key>
-										<string>&#xFFFC;</string>
+										<string>￼</string>
 									</dict>
 									<key>WFSerializationType</key>
 									<string>WFTextTokenString</string>
@@ -219,34 +278,30 @@ X: @_theGreg</string>
 																	<dict>
 																		<key>attachmentsByRange</key>
 																		<dict>
-																			<key>{119, 1}</key>
+																			<key>{380, 1}</key>
+																			<dict>
+																				<key>Type</key>
+																				<string>CurrentDate</string>
+																			</dict>
+																			<key>{396, 1}</key>
 																			<dict>
 																				<key>Aggrandizements</key>
 																				<array>
 																					<dict>
+																						<key>DictionaryKey</key>
+																						<string>model</string>
 																						<key>Type</key>
-																						<string>WFDateFormatVariableAggrandizement</string>
-																						<key>WFDateFormatStyle</key>
-																						<string>Long</string>
-																						<key>WFISO8601IncludeTime</key>
-																						<false/>
-																						<key>WFTimeFormatStyle</key>
-																						<string>None</string>
+																						<string>WFDictionaryValueVariableAggrandizement</string>
 																					</dict>
 																				</array>
 																				<key>Type</key>
-																				<string>CurrentDate</string>
-																			</dict>
-																			<key>{140, 1}</key>
-																			<dict>
-																				<key>Type</key>
 																				<string>Variable</string>
 																				<key>VariableName</key>
-																				<string>model</string>
+																				<string>config</string>
 																			</dict>
 																		</dict>
 																		<key>string</key>
-																		<string>You are venice.ai serving large language models. Answer as concisely as possible unless told otherwise.  Current date: &#xFFFC;. Your LLM Model is &#xFFFC; </string>
+																		<string>You are venice.ai, an LLM inference service that is integrated with Apple Shortcuts voice interactions. Respond in 2-3 sentences max, unless explicitly asked for detail. Use spoken-language phrasing, replace links with just the DNS domain. For example instead of "https://www.example.com/bla/page.html" use "link at example.com", and prioritize clarity over detail. Current date: ￼. LLM Version: ￼. Be conversational, concise, and adapt to follow-ups. Assume follow-up questions relate to the previous interaction unless stated otherwise. Use the current date for time-based answers. Do not include Citations when using websearch.</string>
 																	</dict>
 																	<key>WFSerializationType</key>
 																	<string>WFTextTokenString</string>
@@ -264,6 +319,79 @@ X: @_theGreg</string>
 									</array>
 									<key>WFSerializationType</key>
 									<string>WFArrayParameterState</string>
+								</dict>
+							</dict>
+							<dict>
+								<key>WFItemType</key>
+								<integer>1</integer>
+								<key>WFKey</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>string</key>
+										<string>venice_parameters</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFTextTokenString</string>
+								</dict>
+								<key>WFValue</key>
+								<dict>
+									<key>Value</key>
+									<dict>
+										<key>Value</key>
+										<dict>
+											<key>WFDictionaryFieldValueItems</key>
+											<array>
+												<dict>
+													<key>WFItemType</key>
+													<integer>0</integer>
+													<key>WFKey</key>
+													<dict>
+														<key>Value</key>
+														<dict>
+															<key>string</key>
+															<string>enable_web_search</string>
+														</dict>
+														<key>WFSerializationType</key>
+														<string>WFTextTokenString</string>
+													</dict>
+													<key>WFValue</key>
+													<dict>
+														<key>Value</key>
+														<dict>
+															<key>attachmentsByRange</key>
+															<dict>
+																<key>{0, 1}</key>
+																<dict>
+																	<key>Aggrandizements</key>
+																	<array>
+																		<dict>
+																			<key>DictionaryKey</key>
+																			<string>websearch</string>
+																			<key>Type</key>
+																			<string>WFDictionaryValueVariableAggrandizement</string>
+																		</dict>
+																	</array>
+																	<key>Type</key>
+																	<string>Variable</string>
+																	<key>VariableName</key>
+																	<string>config</string>
+																</dict>
+															</dict>
+															<key>string</key>
+															<string>￼</string>
+														</dict>
+														<key>WFSerializationType</key>
+														<string>WFTextTokenString</string>
+													</dict>
+												</dict>
+											</array>
+										</dict>
+										<key>WFSerializationType</key>
+										<string>WFDictionaryFieldValue</string>
+									</dict>
+									<key>WFSerializationType</key>
+									<string>WFDictionaryFieldValue</string>
 								</dict>
 							</dict>
 						</array>
@@ -298,74 +426,6 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.gettext</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>A48DE5B3-21FF-4DA4-B5E7-79E1E62E3406</string>
-				<key>WFTextActionText</key>
-				<string>⚠️ API key invalid!</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.setvariable</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>Text</string>
-						<key>OutputUUID</key>
-						<string>A48DE5B3-21FF-4DA4-B5E7-79E1E62E3406</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFVariableName</key>
-				<string>error-title</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.gettext</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>CA69F4BC-85ED-4C63-95CA-F920C446A78B</string>
-				<key>WFTextActionText</key>
-				<string>The API key is not set correctly. Review setup readme page?</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.setvariable</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>Text</string>
-						<key>OutputUUID</key>
-						<string>CA69F4BC-85ED-4C63-95CA-F920C446A78B</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFVariableName</key>
-				<string>error-message</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
 			<string>is.workflow.actions.conditional</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
@@ -385,10 +445,19 @@ X: @_theGreg</string>
 					<dict>
 						<key>Value</key>
 						<dict>
+							<key>Aggrandizements</key>
+							<array>
+								<dict>
+									<key>DictionaryKey</key>
+									<string>apikey</string>
+									<key>Type</key>
+									<string>WFDictionaryValueVariableAggrandizement</string>
+								</dict>
+							</array>
 							<key>Type</key>
 							<string>Variable</string>
 							<key>VariableName</key>
-							<string>API-key</string>
+							<string>config</string>
 						</dict>
 						<key>WFSerializationType</key>
 						<string>WFTextTokenAttachment</string>
@@ -406,7 +475,7 @@ X: @_theGreg</string>
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>WFRepeatCount</key>
-				<real>20</real>
+				<real>40</real>
 			</dict>
 		</dict>
 		<dict>
@@ -491,11 +560,13 @@ X: @_theGreg</string>
 			<dict>
 				<key>UUID</key>
 				<string>96A3708A-68C3-4FB0-BC8B-B5A7B30E1C58</string>
+				<key>WFDictateTextStopListening</key>
+				<string>After Pause</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.appendvariable</string>
+			<string>is.workflow.actions.setvariable</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>WFInput</key>
@@ -581,29 +652,69 @@ X: @_theGreg</string>
 			<dict>
 				<key>GroupingIdentifier</key>
 				<string>4BD7B99C-7D64-4913-BBE7-D8E57DF294B4</string>
-				<key>WFCondition</key>
-				<integer>8</integer>
-				<key>WFConditionalActionString</key>
-				<string>No</string>
+				<key>WFConditions</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>WFActionParameterFilterPrefix</key>
+						<integer>0</integer>
+						<key>WFActionParameterFilterTemplates</key>
+						<array>
+							<dict>
+								<key>WFCondition</key>
+								<integer>8</integer>
+								<key>WFConditionalActionString</key>
+								<string>No</string>
+								<key>WFInput</key>
+								<dict>
+									<key>Type</key>
+									<string>Variable</string>
+									<key>Variable</key>
+									<dict>
+										<key>Value</key>
+										<dict>
+											<key>Type</key>
+											<string>Variable</string>
+											<key>VariableName</key>
+											<string>user-input</string>
+										</dict>
+										<key>WFSerializationType</key>
+										<string>WFTextTokenAttachment</string>
+									</dict>
+								</dict>
+							</dict>
+							<dict>
+								<key>WFCondition</key>
+								<integer>8</integer>
+								<key>WFConditionalActionString</key>
+								<string>Nope</string>
+								<key>WFInput</key>
+								<dict>
+									<key>Type</key>
+									<string>Variable</string>
+									<key>Variable</key>
+									<dict>
+										<key>Value</key>
+										<dict>
+											<key>Type</key>
+											<string>Variable</string>
+											<key>VariableName</key>
+											<string>user-input</string>
+										</dict>
+										<key>WFSerializationType</key>
+										<string>WFTextTokenAttachment</string>
+									</dict>
+								</dict>
+							</dict>
+						</array>
+						<key>WFContentPredicateBoundedDate</key>
+						<false/>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFContentPredicateTableTemplate</string>
+				</dict>
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
-				<key>WFInput</key>
-				<dict>
-					<key>Type</key>
-					<string>Variable</string>
-					<key>Variable</key>
-					<dict>
-						<key>Value</key>
-						<dict>
-							<key>Type</key>
-							<string>Variable</string>
-							<key>VariableName</key>
-							<string>user-input</string>
-						</dict>
-						<key>WFSerializationType</key>
-						<string>WFTextTokenAttachment</string>
-					</dict>
-				</dict>
 			</dict>
 		</dict>
 		<dict>
@@ -847,7 +958,7 @@ X: @_theGreg</string>
 											</dict>
 										</dict>
 										<key>string</key>
-										<string>&#xFFFC;</string>
+										<string>￼</string>
 									</dict>
 									<key>WFSerializationType</key>
 									<string>WFTextTokenString</string>
@@ -986,7 +1097,7 @@ X: @_theGreg</string>
 							</dict>
 						</dict>
 						<key>string</key>
-						<string>&#xFFFC;</string>
+						<string>￼</string>
 					</dict>
 					<key>WFSerializationType</key>
 					<string>WFTextTokenString</string>
@@ -1054,14 +1165,23 @@ X: @_theGreg</string>
 										<dict>
 											<key>{7, 1}</key>
 											<dict>
+												<key>Aggrandizements</key>
+												<array>
+													<dict>
+														<key>DictionaryKey</key>
+														<string>apikey</string>
+														<key>Type</key>
+														<string>WFDictionaryValueVariableAggrandizement</string>
+													</dict>
+												</array>
 												<key>Type</key>
 												<string>Variable</string>
 												<key>VariableName</key>
-												<string>API-key</string>
+												<string>config</string>
 											</dict>
 										</dict>
 										<key>string</key>
-										<string>Bearer &#xFFFC;</string>
+										<string>Bearer ￼</string>
 									</dict>
 									<key>WFSerializationType</key>
 									<string>WFTextTokenString</string>
@@ -1116,35 +1236,6 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.documentpicker.save</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>CFB999D6-DE10-4787-840C-92F1F816BB76</string>
-				<key>WFAskWhereToSave</key>
-				<false/>
-				<key>WFFileDestinationPath</key>
-				<string>venice_responses.json</string>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>Contents of URL</string>
-						<key>OutputUUID</key>
-						<string>50E040FE-1AE6-4066-8D03-456EA3234F73</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFSaveFileOverwrite</key>
-				<true/>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
 			<string>is.workflow.actions.detect.dictionary</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
@@ -1155,9 +1246,9 @@ X: @_theGreg</string>
 					<key>Value</key>
 					<dict>
 						<key>OutputName</key>
-						<string>Saved File</string>
+						<string>Contents of URL</string>
 						<key>OutputUUID</key>
-						<string>CFB999D6-DE10-4787-840C-92F1F816BB76</string>
+						<string>50E040FE-1AE6-4066-8D03-456EA3234F73</string>
 						<key>Type</key>
 						<string>ActionOutput</string>
 					</dict>
@@ -1323,10 +1414,10 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.showresult</string>
+			<string>is.workflow.actions.speaktext</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
-				<key>Text</key>
+				<key>WFText</key>
 				<dict>
 					<key>Value</key>
 					<dict>
@@ -1343,7 +1434,7 @@ X: @_theGreg</string>
 							</dict>
 						</dict>
 						<key>string</key>
-						<string>&#xFFFC;</string>
+						<string>￼</string>
 					</dict>
 					<key>WFSerializationType</key>
 					<string>WFTextTokenString</string>
@@ -1363,10 +1454,10 @@ X: @_theGreg</string>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.showresult</string>
+			<string>is.workflow.actions.speaktext</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
-				<key>Text</key>
+				<key>WFText</key>
 				<dict>
 					<key>Value</key>
 					<dict>
@@ -1381,7 +1472,7 @@ X: @_theGreg</string>
 							</dict>
 						</dict>
 						<key>string</key>
-						<string>&#xFFFC;</string>
+						<string>￼</string>
 					</dict>
 					<key>WFSerializationType</key>
 					<string>WFTextTokenString</string>
@@ -1475,7 +1566,7 @@ X: @_theGreg</string>
 											</dict>
 										</dict>
 										<key>string</key>
-										<string>&#xFFFC;</string>
+										<string>￼</string>
 									</dict>
 									<key>WFSerializationType</key>
 									<string>WFTextTokenString</string>
@@ -1547,7 +1638,7 @@ X: @_theGreg</string>
 							</dict>
 						</dict>
 						<key>string</key>
-						<string>&#xFFFC;</string>
+						<string>￼</string>
 					</dict>
 					<key>WFSerializationType</key>
 					<string>WFTextTokenString</string>
@@ -1607,85 +1698,11 @@ X: @_theGreg</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>WFAlertActionCancelButtonShown</key>
-				<true/>
+				<false/>
 				<key>WFAlertActionMessage</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>attachmentsByRange</key>
-						<dict>
-							<key>{0, 1}</key>
-							<dict>
-								<key>Type</key>
-								<string>Variable</string>
-								<key>VariableName</key>
-								<string>error-message</string>
-							</dict>
-						</dict>
-						<key>string</key>
-						<string>&#xFFFC;</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenString</string>
-				</dict>
+				<string>Bad API key</string>
 				<key>WFAlertActionTitle</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>attachmentsByRange</key>
-						<dict>
-							<key>{0, 1}</key>
-							<dict>
-								<key>Type</key>
-								<string>Variable</string>
-								<key>VariableName</key>
-								<string>error-title</string>
-							</dict>
-						</dict>
-						<key>string</key>
-						<string>&#xFFFC;</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenString</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.url</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>Show-WFURLActionURL</key>
-				<true/>
-				<key>UUID</key>
-				<string>80E37AA1-3F6F-459C-B180-68E5DD101B47</string>
-				<key>WFURLActionURL</key>
-				<string>https://github.com/MnrGreg/HeyVenice</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.openurl</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>Show-WFInput</key>
-				<true/>
-				<key>UUID</key>
-				<string>2136245F-17B7-4BFD-AEA4-6E7CC12DED13</string>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>OutputName</key>
-						<string>URL</string>
-						<key>OutputUUID</key>
-						<string>80E37AA1-3F6F-459C-B180-68E5DD101B47</string>
-						<key>Type</key>
-						<string>ActionOutput</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
+				<string></string>
 			</dict>
 		</dict>
 		<dict>
@@ -1695,13 +1712,15 @@ X: @_theGreg</string>
 			<dict>
 				<key>GroupingIdentifier</key>
 				<string>99F33427-B29D-4185-9A19-DA1A26F59F72</string>
+				<key>UUID</key>
+				<string>7C375B84-F831-4586-9C78-AC721094B3B4</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 			</dict>
 		</dict>
 	</array>
 	<key>WFWorkflowClientVersion</key>
-	<string>3303.0.4</string>
+	<string>3514.0.4.200</string>
 	<key>WFWorkflowHasOutputFallback</key>
 	<false/>
 	<key>WFWorkflowHasShortcutInputVariables</key>
@@ -1711,16 +1730,16 @@ X: @_theGreg</string>
 		<key>WFWorkflowIconGlyphNumber</key>
 		<integer>61566</integer>
 		<key>WFWorkflowIconStartColor</key>
-		<integer>255</integer>
+		<integer>4274264319</integer>
 	</dict>
 	<key>WFWorkflowImportQuestions</key>
 	<array/>
 	<key>WFWorkflowInputContentItemClasses</key>
 	<array/>
 	<key>WFWorkflowMinimumClientVersion</key>
-	<integer>1106</integer>
+	<integer>3010</integer>
 	<key>WFWorkflowMinimumClientVersionString</key>
-	<string>1106</string>
+	<string>3010</string>
 	<key>WFWorkflowOutputContentItemClasses</key>
 	<array/>
 	<key>WFWorkflowTypes</key>
